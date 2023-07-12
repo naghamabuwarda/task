@@ -2,10 +2,10 @@ import { Request, Response } from "express";
 import User from "../models";
 import multer from "multer";
 
-
 const createUser = async (req: Request, res: Response) => {
-    const { name, description, imgUrl } = req.body;
-    console.log(name, description, imgUrl)
+
+    const { name, description } = req.body;
+    const imgUrl = req.file.path;
     const user = await User.create({
         name, description, imgUrl
     }, {
